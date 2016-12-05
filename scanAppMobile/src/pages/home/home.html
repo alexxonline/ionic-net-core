@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Facturar</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h2>Facturar</h2>
+  <button ion-button (click)="showAddForm()" *ngIf="!showAdd">Agregar</button>
+  <div *ngIf="showAdd">
+    <p>
+      Ingrese el código del producto que desea facturar o utilice el scanner de su telefono
+    </p>
+    <ion-list>
+      <ion-item>
+        <ion-label floating>Código:</ion-label>
+        <ion-input type="text" [(ngModel)]="productCode"></ion-input>
+      </ion-item>
+    </ion-list>
+    <button ion-button (click)="search()">Buscar</button>
+    <button ion-button color="secondary" (click)="useBarCode()">Leer Barra</button>
+    <button ion-button color="light" (click)="cancel()">Cancelar</button>
+  </div>
+  <div>
+    <h3>Productos a facturar</h3>
+  </div>
+</ion-content>

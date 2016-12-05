@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Consultar
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h2>Consultar precio</h2>
+  <div>
+    <p>
+      Ingrese el código del producto que desea buscar su precio o utilice el scanner de su telefono
+    </p>
+    <ion-list>
+      <ion-item>
+        <ion-label floating>Código:</ion-label>
+        <ion-input type="text" [(ngModel)]="productCode"></ion-input>
+      </ion-item>
+    </ion-list>
+    <button ion-button (click)="search()">Buscar</button>
+    <button ion-button color="secondary" (click)="useBarCode()">Leer Barra</button>
+  </div>
+</ion-content>
