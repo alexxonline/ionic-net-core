@@ -23,5 +23,17 @@
   </div>
   <div>
     <h3>Productos a facturar</h3>
+    <ion-grid>
+      <ion-row>
+        <ion-col width-20><strong>Cod.</strong></ion-col>
+        <ion-col width-50><strong>Nombre</strong></ion-col>
+        <ion-col width-30><strong>Precio</strong></ion-col>
+      </ion-row>
+      <ion-row *ngFor="let product of products">
+        <ion-col width-20>{{product.productCode}}</ion-col>
+        <ion-col width-50>{{product.name}}</ion-col>
+        <ion-col width-30>{{product.price}}</ion-col>
+      </ion-row>
+    </ion-grid>
   </div>
 </ion-content>

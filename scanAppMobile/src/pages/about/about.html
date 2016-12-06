@@ -21,4 +21,23 @@
     <button ion-button (click)="search()">Buscar</button>
     <button ion-button color="secondary" (click)="useBarCode()">Leer Barra</button>
   </div>
+  <div *ngIf="product">
+    <ion-grid>
+      <ion-row>
+        <ion-col width-30><strong>Código</strong></ion-col>
+        <ion-col width-70>{{product.productCode}}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col width-30><strong>Nombre</strong></ion-col>
+        <ion-col width-70>{{product.name}}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col width-30><strong>Precio</strong></ion-col>
+        <ion-col width-70>$ {{product.price}}</ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <div>
+    {{barCode}}
+  </div>
 </ion-content>

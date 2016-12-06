@@ -11,8 +11,9 @@ export class HomePage {
   productCode: string;
   showAdd: boolean;
   product: Product;
+  products: Product[];
   constructor(public navCtrl: NavController, private productService: ProductService) {
-
+    this.products = new Array();
   }
 
   showAddForm() {
@@ -25,8 +26,11 @@ export class HomePage {
   search() {
     this.productService.searchByProductCode(this.productCode)
       .subscribe(p => {
-        this.product = p
-        console.log(p);
+        if(p != null){
+          this.productCode = "";
+          this.products.push(p);      
+          this.showAdd = false;  
+        }
       }, e => { }, () => { });
   }
 

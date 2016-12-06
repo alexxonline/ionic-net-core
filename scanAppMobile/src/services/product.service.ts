@@ -10,11 +10,13 @@ import { Product } from '../models/product';
 export class ProductService {
     serverUrl : string
     constructor(private http: Http, private storage : Storage) {
-        storage.get('server-url').then(res => this.serverUrl = res);
+        //storage.get('server-url').then(res => this.serverUrl = res);
+        this.serverUrl = "http://localhost:8100";
     }
 
     searchByProductCode(productCode: string) {
         return this.http.get(`${this.serverUrl}/api/products/${productCode}`)
-            .map((r: Response) => r.json().data as Product);
+            .map((r: Response) => {
+                return r.json() as Product;});
     }
 }
