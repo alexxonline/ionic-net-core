@@ -10,8 +10,8 @@ import { Product } from '../models/product';
 export class ProductService {
     serverUrl : string
     constructor(private http: Http, private storage : Storage) {
-        //storage.get('server-url').then(res => this.serverUrl = res);
-        this.serverUrl = "http://localhost:8100";
+        storage.get('server-url').then(res => this.serverUrl = res);
+        //this.serverUrl = "http://localhost:8100";
     }
 
     searchByProductCode(productCode: string) {

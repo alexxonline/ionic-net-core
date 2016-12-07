@@ -14,24 +14,37 @@ export class AboutPage {
   productCode: string;
   product: Product;
   barCode: string;
-  
-  constructor(public navCtrl: NavController, private productService:ProductService) {
- 
+  error: string;
+
+  constructor(public navCtrl: NavController, private productService: ProductService) {
+
   }
 
   search() {
     this.productService.searchByProductCode(this.productCode)
       .subscribe(p => {
-        if(p != null){
+        if (p != null) {
           this.productCode = "";
-          this.product = p;  
+          this.product = p;
         }
-      }, e => { }, () => { });
+      }, e => {  this.error = JSON.stringify(e);}, () => { });
   }
 
   useBarCode() {
     BarcodeScanner.scan().then((barcodeData) => {
       this.barCode = JSON.stringify(barcodeData);
+      if (!barcodeData.cancelled) {
+        var productCode = barcodeData.text;
+        this.productService.searchByProductCode(productCode)
+          .subscribe(p => {
+            if (p != null) {
+              this.productCode = "";
+              this.product = p;
+            }
+          }, e => {this.error = JSON.stringify(e); }, () => { });
+      }
+    }, (err) => {
+      this.barCode = JSON.stringify(err);
     });
   }
 

@@ -19,6 +19,7 @@ namespace scanAppServer
                 .Build();
 
             var host = new WebHostBuilder()
+                .UseUrls("http://0.0.0.0:5000", "http://localhost:5000")
                 .UseConfiguration(config)
                 .UseKestrel()
                 .UseContentRoot(Directory.GetCurrentDirectory())
